@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Start</title>
+    <style>
+        h1 {
+            font-size: 100px;
+
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .search-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 18px 20px 18px 50px;
+            font-size: 1.1rem;
+            border: 2px solid #3a3a3a;
+            border-radius: 30px;
+            background: #2d2d2d;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            border-color: #0078d4;
+            box-shadow: 0 0 15px rgba(0, 120, 212, 0.3);
+            background: #363636;
+        }
+
+        #searchInput::placeholder {
+            color: #888;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #f7f7f7;
+            }
+            
+            #searchInput {
+                background: #ffffff;
+                border-color: #e0e0e0;
+                color: #333;
+            }
+            
+            #searchInput:focus {
+                border-color: #0078d4;
+                background: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; color: #ffffff; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="icon-128.png" alt="Icon" style="width: 96px; height: 96px;">
+            <h1 style="margin: 0;">NOVA</h1>
+        </div>
+
+
+        <form action="https://www.google.com/search" method="GET" target="_top" style="width: 100%;">
+            <div class="search-container">
+                <input type="text"
+                       id="searchInput"
+                       name="q"
+                       placeholder="Search on Google..."
+                       autofocus
+                       autocomplete="off"
+                       spellcheck="false">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

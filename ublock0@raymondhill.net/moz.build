@@ -1,0 +1,8 @@
+# -*- Mode: python; indent-tabs-mode: nil; tab-width: 40 -*-
+# vim: set filetype=python:
+
+DEFINES["MOZ_EXTENSION_ID"] = "ublock0@raymondhill.net"
+
+FINAL_TARGET_FILES.extensions["ublock0@raymondhill.net"] = [
+    "**",
+]
