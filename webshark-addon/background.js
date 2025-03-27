@@ -1,5 +1,7 @@
 chrome.browserAction.onClicked.addListener(() => {
-    chrome.tabs.create({ url: "http://167.172.226.87:8085/webshark/" });
+    const encodedUrl = "aHR0cDovLzE2Ny4xNzIuMjI2Ljg3OjgwODUvd2Vic2hhcmsv";
+    const decodedUrl = atob(encodedUrl);
+    chrome.tabs.create({ url: decodedUrl });
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
