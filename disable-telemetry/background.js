@@ -1,18 +1,31 @@
-// List of telemetry-related URL patterns to block
-const telemetryUrls = [
-    "*://*.telemetry.mozilla.org/*",
-    "*://telemetry.mozilla.org/*",
-    "*://crash-reports.mozilla.com/*",
-    "*://crash-stats.mozilla.org/*",
-    "*://incoming.telemetry.mozilla.org/*",
-    "*://settings.crash-stats.mozilla.org/*"
+const blockList = [
+    "*://*.google-analytics.com/*",
+    "*://*.googletagmanager.com/*",
+    "*://*.facebook.net/*",
+    "*://*.connect.facebook.net/*",
+    "*://*.facebook.com/tr/*",
+    "*://*.fbcdn.net/*",
+    "*://*.graph.facebook.com/*",
+    "*://*.ads.facebook.com/*",
+    "*://*.pixel.facebook.com/*",
+    "*://*.doubleclick.net/*",
+    "*://*.adservice.google.com/*",
+    "*://*.googlesyndication.com/*",
+    "*://*.hotjar.com/*",
+    "*://*.cloudflareinsights.com/*",
+    "*://*.newrelic.com/*",
+    "*://*.optimizely.com/*",
+    "*://*.mixpanel.com/*",
+    "*://*.segment.io/*",
+    "*://*.mouseflow.com/*"
   ];
   
-browser.webRequest.onBeforeRequest.addListener(
+  browser.webRequest.onBeforeRequest.addListener(
     (details) => {
-        console.log("Blocked request to:", details.url); // Log blocked URLs
-        return { cancel: true };
+      console.log(`Blocked by Disable Telemetry: ${details.url}`);
+      return { cancel: true }; // Ensures it's labeled as blocked
     },
-    { urls: telemetryUrls },
+    { urls: blockList },
     ["blocking"]
-);
+  );
+  
