@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "WebShark",
+    "version": "1.0",
+    "description": "Opens WebShark in a new tab and allows PCAP files",
+    "permissions": ["storage", "tabs"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+    },
+    "browser_action": {
+      "default_title": "Open WebShark"
+    },
+    "icons": {
+      "48": "icon.png"
+    }
+  }
