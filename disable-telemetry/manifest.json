@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Disable Telemetry",
+  "name": "NOVA Telemetry Handler",
   "version": "1.0",
   "description": "Blocks telemetry from websites.",
   "permissions": [

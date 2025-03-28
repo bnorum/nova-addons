@@ -1,31 +1,23 @@
+console.log("Disable Telemetry extension loaded!");
+
 const blockList = [
-    "*://*.google-analytics.com/*",
-    "*://*.googletagmanager.com/*",
-    "*://*.facebook.net/*",
-    "*://*.connect.facebook.net/*",
-    "*://*.facebook.com/tr/*",
-    "*://*.fbcdn.net/*",
-    "*://*.graph.facebook.com/*",
-    "*://*.ads.facebook.com/*",
-    "*://*.pixel.facebook.com/*",
-    "*://*.doubleclick.net/*",
-    "*://*.adservice.google.com/*",
-    "*://*.googlesyndication.com/*",
-    "*://*.hotjar.com/*",
-    "*://*.cloudflareinsights.com/*",
-    "*://*.newrelic.com/*",
-    "*://*.optimizely.com/*",
-    "*://*.mixpanel.com/*",
-    "*://*.segment.io/*",
-    "*://*.mouseflow.com/*"
-  ];
-  
-  browser.webRequest.onBeforeRequest.addListener(
-    (details) => {
-      console.log(`Blocked by Disable Telemetry: ${details.url}`);
-      return { cancel: true }; // Ensures it's labeled as blocked
-    },
-    { urls: blockList },
-    ["blocking"]
-  );
+  "*://*.facebook.com/tr/*",  // Facebook tracking pixel
+  "*://*.connect.facebook.net/en_US/fbevents.js",  // Pixel tracker
+  "*://*.facebook.net/signals/config/*",  // Tracking config
+  "*://*.graph.facebook.com/logging_client_events",  // Logs user actions
+  "*://*.graph.facebook.com/v*/me/friends",  // Possible tracking request
+  "*://*.pixel.facebook.com/*",  // Pixel tracking
+  "*://*.ads.facebook.com/*"  // Facebook ads telemetry
+];
+
+
+
+browser.webRequest.onBeforeRequest.addListener(
+  (details) => {
+    console.log(`Blocked by NOVA Telemetry Handler: ${details.url}`);
+    return { cancel: true };
+  },
+  { urls: blockList },
+  ["blocking"]
+);
   
