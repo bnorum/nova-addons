@@ -1,23 +1,42 @@
-console.log("Disable Telemetry extension loaded!");
+async function loadBlocklist() {
+  try {
+      const response = await fetch(browser.runtime.getURL("blocklist.json"));
+      const data = await response.json();
+      return data.trackers; // Only return the tracker list
+  } catch (error) {
+      console.error("Failed to load blocklist:", error);
+      return {};
+  }
+}
 
-const blockList = [
-  "*://*.facebook.com/tr/*",  // Facebook tracking pixel
-  "*://*.connect.facebook.net/en_US/fbevents.js",  // Pixel tracker
-  "*://*.facebook.net/signals/config/*",  // Tracking config
-  "*://*.graph.facebook.com/logging_client_events",  // Logs user actions
-  "*://*.graph.facebook.com/v*/me/friends",  // Possible tracking request
-  "*://*.pixel.facebook.com/*",  // Pixel tracking
-  "*://*.ads.facebook.com/*"  // Facebook ads telemetry
-];
+async function setupBlocking() {
+  const blocklist = await loadBlocklist();
+  const rules = [];
 
+  for (const domain in blocklist) {
+      const entry = blocklist[domain];
 
+      // Only block domains explicitly marked "block"
+      if (entry.default === "block" && entry.rules) {
+          entry.rules.forEach(ruleObj => {
+              if (ruleObj.rule) {
+                  rules.push(`*://${ruleObj.rule}*`);
+              }
+          });
+      }
+  }
 
-browser.webRequest.onBeforeRequest.addListener(
-  (details) => {
-    console.log(`Blocked by NOVA Telemetry Handler: ${details.url}`);
-    return { cancel: true };
-  },
-  { urls: blockList },
-  ["blocking"]
-);
-  
+  console.log("Blocking rules loaded:", rules);
+
+  browser.webRequest.onBeforeRequest.addListener(
+      (details) => {
+          console.log(`Blocked: ${details.url}`);
+          return { cancel: true };
+      },
+      { urls: rules },
+      ["blocking"]
+  );
+}
+
+// Run the blocking setup
+setupBlocking();
