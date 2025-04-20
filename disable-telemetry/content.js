@@ -9,7 +9,7 @@ const telemetrySelectors = [
     "script[src*='adservice.google']",
     "script[src*='googlesyndication']"
   ];
-  
+
   function removeTelemetry() {
     telemetrySelectors.forEach(selector => {
       document.querySelectorAll(selector).forEach(el => {
@@ -18,7 +18,7 @@ const telemetrySelectors = [
       });
     });
   }
-  
+
   // Initial cleanup
   removeTelemetry();
   
