@@ -6,11 +6,11 @@ This repository contains a collection of **custom extensions** developed for the
 
 Each folder in this repository contains the source code and manifest for an individual Nova browser extension. Example extensions may include:
 
-- **telemetry-blocker**: Strips tracking scripts and analytics calls from websites.
-- **theme-switcher**: Allows users to toggle between dark and light modes.
-- **offline-reader**: Saves pages for offline viewing with clean readability.
+- **telemetry-removal**: Strips tracking scripts and analytics calls from websites.
+- **LLM**: Allows users to utilize a **locally-run** LLM to chat and answer questions.
+- **new-tab**: Replaces Firefox UI with a set of elements that don't utilize history-tracking.
 
-*(Replace with actual extensions in the repo if different.)*
+
 
 ## 🚀 Getting Started
 
@@ -36,7 +36,7 @@ nova-addons/
 │   ├── manifest.json
 │   ├── background.js
 │   └── ...
-├── theme-switcher/
+├── LLM/
 │   ├── manifest.json
 │   ├── content.js
 │   └── ...
