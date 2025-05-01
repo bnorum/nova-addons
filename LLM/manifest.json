@@ -17,6 +17,9 @@
     },
     "icons": {
       "128": "icons/icon.png"
-    }
+    },
+    "web_accessible_resources": [
+      "fullview.html"
+    ]
+
   }
-  
