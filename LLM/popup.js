@@ -18,10 +18,8 @@ document.getElementById('send').addEventListener('click', () => {
 
   port.onMessage.addListener(msg => {
     if (msg.error) {
-      clearTimeout(timeoutId);
       responseDiv.textContent = `Error: ${msg.error}`;
     } else if (msg.chunk) {
-      clearTimeout(timeoutId);
       fullText += msg.chunk;
       streamed.innerHTML = marked.parse(fullText);
     } else if (msg.done) {
