@@ -8,7 +8,7 @@ Each folder in this repository contains the source code and manifest for an indi
 
 - **telemetry-removal**: Strips tracking scripts and analytics calls from websites.
 - **LLM**: Allows users to utilize a **locally-run** LLM to chat and answer questions.
-- **new-tab**: Replaces Firefox UI with a set of elements that don't utilize history-tracking.
+- **start-screen**: Replaces Firefox UI with a set of elements that don't utilize history-tracking.
 
 
 
