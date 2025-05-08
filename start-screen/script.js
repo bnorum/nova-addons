@@ -42,14 +42,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 const form = document.getElementById('searchForm');
-      const input = document.getElementById('searchInput');
-      const select = document.getElementById('engineSelect');
+const input = document.getElementById('searchInput');
+const select = document.getElementById('engineSelect');
 
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const baseUrl = select.value;
-        const query = encodeURIComponent(input.value.trim());
-        if (query) {
-          window.location.href = baseUrl + query;
-        }
-      });
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const baseUrl = select.value;
+  const query = encodeURIComponent(input.value.trim());
+  if (query) {
+    window.location.href = baseUrl + query;
+  }
+});
+
+browser.runtime.sendMessage("isIncognito?").then((isIncognito) => {
+  if (isIncognito) {
+    const label = document.createElement("div");
+    label.textContent = "INCOGNITO";
+    label.style.color = "#ff5555";
+    label.style.fontWeight = "bold";
+    label.style.marginTop = "10px";
+    label.style.fontSize = "20px";
+    label.style.letterSpacing = "1px";
+    label.style.textTransform = "uppercase";
+    label.style.textAlign = "center";
+
+    const titleBlock = document.querySelector("h1");
+    if (titleBlock && titleBlock.parentElement) {
+      titleBlock.parentElement.insertAdjacentElement("afterend", label);
+    }
+  }
+});

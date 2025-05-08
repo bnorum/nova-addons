@@ -9,5 +9,10 @@
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "icons": {
     "48": "icon.png"
+  },
+  "incognito": "spanning",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
   }
 }
