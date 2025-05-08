@@ -66,7 +66,7 @@
                 border-color: #e0e0e0;
                 color: #333;
             }
-            
+
             #searchInput:focus {
                 border-color: #0078d4;
                 background: #fff;
@@ -74,25 +74,44 @@
         }
     </style>
 </head>
-<body>
-    <div style="text-align: center; color: #ffffff; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="icon-128.png" alt="Icon" style="width: 96px; height: 96px;">
-            <h1 style="margin: 0;">NOVA</h1>
-        </div>
+<body style="margin:0; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:#1a1a1a; font-family:'Segoe UI', system-ui, sans-serif; color:white;">
 
 
-        <form action="https://www.google.com/search" method="GET" target="_top" style="width: 100%;">
-            <div class="search-container">
-                <input type="text"
-                       id="searchInput"
-                       name="q"
-                       placeholder="Search on Google..."
-                       autofocus
-                       autocomplete="off"
-                       spellcheck="false">
-            </div>
-        </form>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="icon-128.png" alt="Icon" style="width:96px; ">
+      <h1 style="margin:0; font-size:100px;">NOVA</h1>
     </div>
-</body>
-</html>
+
+    <select id="engineSelect">
+        <option value="https://www.google.com/search?q=">Google</option>
+        <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+        <option value="https://www.bing.com/search?q=">Bing</option>
+        <option value="https://search.brave.com/search?q=">Brave</option>
+        <option value="https://www.ecosia.org/search?q=">Ecosia</option>
+    </select>
+
+
+    <form id="searchForm" method="GET" target="_top" style="margin-top:15px;">
+      <div style="display:flex; justify-content:center;">
+
+        <input type="text"
+               id="searchInput"
+               name="q"
+               placeholder="&#x1F50D; Search..."
+               autofocus
+               autocomplete="off"
+               spellcheck="false"
+               style="width:500px; max-width:90vw; padding:18px 20px 18px 20px; font-size:1.1rem; border:2px solid #3a3a3a; border-radius:30px; background:#2d2d2d; color:#ffffff; outline:none;">
+      </div>
+    </form>
+
+    <div id="funFact" style="color:#aaa; margin-top:15px; font-size:16px; font-style:italic; text-align:center; min-height:24px;">
+      Loading fun fact...
+    </div>
+  
+    <script src="script.js"></script>
+
+  </body>
+
+
+
